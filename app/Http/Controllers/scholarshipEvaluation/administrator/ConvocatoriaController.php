@@ -28,12 +28,13 @@ class ConvocatoriaController extends Controller
 
     
     public function store(Request $request)
-    {
+    {   dd(implode(",",$request->porcentage));
         convocations::create([
             'conv_uID' => Str::uuid(),
             'conv_name' => $request->nombre,
             'conv_period' => $request->periodo,
             'conv_email' => base64_encode($request->email),
+            'conv_porcentage' => implode(",",$request->porcentage),
             'conv_comments' => $request->comentarios,
             'conv_end_date' => $request->fecha_fin,
             'conv_start_date' => $request->fecha_inicio,
