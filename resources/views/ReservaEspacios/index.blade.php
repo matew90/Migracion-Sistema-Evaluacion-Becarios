@@ -32,7 +32,7 @@
         				@foreach ($spaces as $key => $value)
 				  <div class="external-event fc-event" style="background-color: {{$value['spa_color']}};"> <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i> {{$value['spa_name']}} </div>
 				   		@endforeach
-     				 @endif 
+     				 @endif
               </div>
               <!--<div class="mt-5">
                 <h5 class="font-size-14 mb-4">Recent activity :</h5>

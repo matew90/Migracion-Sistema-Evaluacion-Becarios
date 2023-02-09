@@ -161,8 +161,9 @@ Reserva de espacios
               </div>
               <div class="form-group">
                 <label for="timeStart">Hora inicio del evento <span class="r-red">*</span></label>
-                <div class="input-group"> <span class="input-group-prepend">
-                  <button type="button" class="btn btn-primary"><i class="fas fa-clock"></i></button>
+                <div class="input-group"> 
+                  <span class="input-group-prepend">
+                    <button type="button" class="btn btn-primary"><i class="fas fa-clock"></i></button>
                   </span>
                   <input type="time" id="timeStart" name="timeStart" min="07:00" max="22:00" step="3600" class="form-control" >
                 </div>

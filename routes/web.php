@@ -49,15 +49,66 @@ Route::group(['middleware' => ['web', 'MsGraphAuthenticated'], 'namespace' => 'A
     });
     
   });
-  // Reserva Espacios
-  Route::prefix('reserva-espacios')->group(function () {
-    // Reservas
-    Route::controller(ReservaEspacios\ReservaController::class)->prefix('reserva')->name('reserva-espacios.')->group(function () {
-      Route::get('/', 'index')->name('reserva.index');
-      Route::get('/mostrar', 'show')->name('reserva.show');
-      Route::get('/mostrar/{start}', 'view')->name('reserva.view');
-      Route::post('/preview', 'preview')->name('reserva.preview');
-    });
+ 
+    // Reserva Espacios
+    Route::prefix('reserva-espacios')->group(function () {
+      // Reservas
+      Route::controller(ReservaEspacios\ReservaController::class)->prefix('reserva')->name('reserva-espacios.')->group(function () {
+          Route::get('/', 'index')->name('reserva.index');
+          Route::get('/crear', 'create')->name('reserva.create');
+          Route::post('/preview', 'preview')->name('reserva.preview');
+          Route::get('/mostrar/{spa_uID}', 'show')->name('reserva.show');
+          Route::post('/crear', 'store')->name('reserva.store');
+          Route::post('/editar', 'update')->name('reserva.update');
+      });
+
+      // Reservaciones
+      Route::controller(ReservaEspacios\ReservacionesController::class)->prefix('reservaciones')->name('reservaciones.')->group(function () {
+          Route::get('/', 'index')->name('reservaciones.index');
+          Route::get('/mostrar', 'show')->name('reservaciones.show');
+          Route::post('/mostrar/{res_uID}', 'view')->name('reservaciones.view');
+      });
+
+      // Espacios
+      Route::controller(ReservaEspacios\SpacesController::class)->prefix('espacios')->name('espacios.')->group(function () {
+          Route::get('/', 'index')->name('espacios.index');
+          Route::get('/mostrar', 'show')->name('espacios.show');
+          Route::get('/crear', 'create')->name('espacios.create');
+          Route::post('/crear', 'store')->name('espacios.store');
+          Route::post('/mostrar/{spa_uID}', 'view')->name('espacios.view');
+          Route::post('/eliminar/{spa_uID}', 'delete')->name('espacios.delete');
+          Route::post('/editar', 'edit')->name('espacios.edit');
+      });
+
+      // Inventario
+      Route::controller(ReservaEspacios\InventoryController::class)->prefix('inventario')->name('inventario.')->group(function () {
+          Route::get('/', 'index')->name('inventario.index');
+          Route::get('/mostrar', 'show')->name('inventario.show');
+          Route::get('/crear', 'create')->name('inventario.create');
+          Route::post('/crear', 'store')->name('inventario.store');
+          Route::post('/mostrar/{inv_uID}', 'view')->name('inventario.view');
+          Route::post('/eliminar/{inv_uID}', 'delete')->name('inventario.delete');
+          Route::post('/editar', 'edit')->name('inventario.edit');
+      });
+      // Calendario Mensual
+      Route::controller(ReservaEspacios\MesController::class)->prefix('mensual')->name('mensual.')->group(function () {
+          Route::get('/', 'show')->name('mensual.show');
+          Route::get('/mensual/{start}', 'view')->name('mensual.view');
+      });
+      // Calendario Semanal
+      Route::controller(ReservaEspacios\SemanalController::class)->prefix('semanal')->name('semanal.')->group(function () {
+          Route::get('/', 'show')->name('semanal.show');
+          Route::get('/semanal/{res_uID}', 'view')->name('semanal.view');
+          Route::post('/eliminar/{res_uID}', 'delete')->name('semanal.delete');
+          Route::get('/editar/{res_uID}', 'edit')->name('semanal.edit');
+      });
+      // Calendario Día
+      Route::controller(ReservaEspacios\DiaController::class)->prefix('dia')->name('dia.')->group(function () {
+          Route::get('/', 'show')->name('dia.show');
+          Route::get('/dia/{res_uID}', 'view')->name('dia.view');
+          Route::post('/eliminar/{res_uID}', 'delete')->name('dia.delete');
+          Route::get('/editar/{res_uID}', 'edit')->name('dia.edit');
+      });
   });
 
   // Evaluación becarios

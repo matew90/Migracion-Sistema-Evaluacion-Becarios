@@ -92,7 +92,8 @@
 
                           <div class="col-sm-10">
                             <table width="100%" style="border: 1px solid #8c34ea; border-radius: 10px;">
-                              <tbody><tr>
+                              <tbody>
+                              <tr>
                                 <td class="borde-right text-center"><label class="datInfo"><b>Porcentaje de beca</b><span style="color: #8c34ea;"> *</span></label></td>
                                 <td class="borde-right text-center"><label class="datInfo"><b>Horas a la semana</b></label></td>
                                 <td class="text-center"><label class="datInfo"><b>Horas al semestre</b></label></td>
@@ -147,10 +148,10 @@
                           <div class="col-sm-12">
                              <span class="input-group-prepend">
                               <button type="button" class="btn btn-primary"><i class="mdi mdi-comment mdi-18px"></i></button>
-                              <input class="form-control" type="text" name="comentarios" required>
-
+                              <textarea class="form-control" " name="comentarios" required></textarea>
                             </span>
                           </div>
+
                       </div>
                     </div>
                   </div>

@@ -21,6 +21,7 @@ class CreateConvocationsTable extends Migration
             $table->date('conv_start_date');
             $table->date('conv_end_date');
             $table->string('conv_email');
+            $table->text('conv_porcentage');
             $table->text('conv_comments');
             $table->foreignUuid('sta_uID');
             $table->foreignUuid('created_by')->nullable();
